@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}cart{% endblock %}
+{% block content %}
+<br>
+<br>
+<br>
+
+<div align="center">
+  <font face="Playfair Display Bold" size="7">CART.</font>
+</div>
+<br>
+
+<!-- Main Menu Section -->
+<div align="center">
+  <form method="post">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="">Item Name</th>
+          <th class="">Item Price</th>
+          <th class="">Quatity</th>
+          <th class="">Total Price</th>
+          <th class="">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for product_id, product in product_dict.items %}
+        <tr class="">
+          <td class="align-middle">
+            <div class="product-info">
+              <img src="{{ product.product.image.url }}" width="50" href="">
+              <a href="" style="color:#ff7b00;">{{ product.product.title }}</a>
+            </div>
+          </td>
+          <td class="align-middle">${{ product.product.price }}</td>
+          <td class="align-middle">
+            {{ product.count }}
+          </td>
+          <td class="align-middle">${% widthratio product.product.price 1 product.count %}</td>
+          <td class="align-middle">
+            <input type="button" class="btn btn-outline-danger" value="Remove"
+              data-product-id="{{ product.product.id }}"></button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br><br>
+    <a href="/order/" class="btn btn-danger">返回點餐</a>
+    <a href="checkout.html" class="btn btn-warning" style="color:#ffffff">送出訂單</a>
+  </form>
+</div>
+
+
+{% endblock content %}

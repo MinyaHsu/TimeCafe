@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}ONLINE ORDER{% endblock %}
+{% block content %}
+<br>
+<br>
+<br>
+<div align="center">
+    <font face="Playfair Display Bold" size="7">ONLINE ORDER.</font>
+</div>
+<br>
+<div class="card-deck">
+   {% for product in product %}
+   <div class="col-sm-3">
+      <div class="card">
+      
+         <div class="card-body">
+            <a href="{% url 'detail' product.slug %}"><img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap"></a>
+            <br>
+            <br>
+            <h4 class="card-title"><a href="{% url 'detail' product.slug %}" style="color:#ff7b00;">{{ product.title }}</a></h4>
+            <h7>售價:{{ product.price }}元 </h7>
+            <br>
+         </div>
+      </div>
+      <br>
+   </div>
+   {% endfor %}
+
+</div>
+{% endblock %}
